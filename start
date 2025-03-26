@@ -16,3 +16,7 @@ print(x)
 print(x.t().shape)
 print(d+x)
 print(d*x)
+
+#移动张量运算位置
+if torch.cuda.is_available():
+  tensor_gpu=tensor_from_list.to("cuda")
