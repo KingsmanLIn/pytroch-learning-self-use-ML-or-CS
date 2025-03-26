@@ -13,6 +13,6 @@ print(d)
 
 x=torch.randn(2,3,device="cuda")
 print(x)
-print(x.t())
+print(x.t().shape)
 print(d+x)
 print(d*x)
