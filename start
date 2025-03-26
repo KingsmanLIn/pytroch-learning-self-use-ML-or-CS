@@ -1,0 +1,18 @@
+import torch
+
+#数组
+import numpy as np
+numpy_array=np.array([[1,2,3],[3,4,5]])
+torch_tensor=torch.from_numpy(numpy_array)
+print(torch_tensor)
+
+#指定对应设备进行进行运算
+device=torch.device("cuda" if torch.cuda.is_available() else "cpu")
+d=torch.ones(2,3,device=device)
+print(d)
+
+x=torch.randn(2,3,device="cuda")
+print(x)
+print(x.t())
+print(d+x)
+print(d*x)
