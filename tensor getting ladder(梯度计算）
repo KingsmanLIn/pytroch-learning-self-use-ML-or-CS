@@ -1,0 +1,16 @@
+import torch
+
+#梯度和自动微分
+#   创造一个需要梯度的张量
+tensor_require_grad=torch.tensor([1.0],requires_grad=True)
+
+#对该张量进行操作
+tensor_result=tensor_require_grad*3
+
+#计算梯度
+tensor_result.backward()
+print(tensor_require_grad.grad)
+
+'''本段代码计算的是每个张量的梯度
+    本质上是为整个张量进行求导进行铺垫
+  梯度就是微积分当中的梯度求导的梯度，寻找整个向量下降最快的方向，以确认我们所进行梯度下降求导的方向“
