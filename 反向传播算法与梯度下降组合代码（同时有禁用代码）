@@ -1,0 +1,21 @@
+import torch
+#Auto gard自动求导
+#自动求导主要在两个方面起作用，一个是计算梯度（梯度是求导的方向），另一个是反向传播算法的实现
+#原理来自于链式传播法则，就是复合函数求导
+x=torch.randn(2,2,requires_grad=True)
+print(x)
+#对x2*2的张量进行调整
+y=x+2
+z=y*y*3
+#查看z中的所有原始的求均值以后的结果
+out=z.mean()
+print(out)
+#tensor(19.9859, grad_fn=<MeanBackward0>)，返回结果的grad_fn指的是返回结果使用的均值函数进行返回
+#通过反向传播计算梯度
+out.backward()
+print(x.grad)
+#禁用自动求导,即里头的grad值（梯度值）不会被储存进去，因而没有grad值
+#在训练神经网络时，不希望使用自动求导的原因是会降低效率
+with torch.no_grad():
+    y=x*2
+    print(y.grad)
